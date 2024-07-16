@@ -3,4 +3,5 @@ class Hero < ApplicationRecord
     
     scope :sorted_by_name, -> {order(:name) }
     scope :search, -> (term) { where('LOWER(name) LIKE ?', "%#{term.downcase}%") if term.present? }
+    scope :by_token, -> (token) { where(token: token)}
 end
